@@ -1,3 +1,6 @@
+#Generated JSONs
+*.json
+
 # VSCode
 .vscode
 
