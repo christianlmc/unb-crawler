@@ -13,15 +13,11 @@ class UnbItem(scrapy.Item):
     # name = scrapy.Field()
     pass
 
-class DepartamentoItem(scrapy.Item):
-    # define the fields for your item here like:
-    nome = scrapy.Field()
-    disciplinas = scrapy.Field()
-
-class DisciplinasItem(scrapy.Item):
+class DisciplinaItem(scrapy.Item):
     # define the fields for your item here like:
     nome = scrapy.Field()
     turmas = scrapy.Field()
+    departamento = scrapy.Field()
 
 class TurmaItem(scrapy.Item):
     # define the fields for your item here like:
