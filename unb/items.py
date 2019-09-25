@@ -16,9 +16,9 @@ class UnbItem(scrapy.Item):
 class DepartamentoItem(scrapy.Item):
     # define the fields for your item here like:
     nome = scrapy.Field()
-    disciplina = scrapy.Field()
+    disciplinas = scrapy.Field()
 
-class DisciplinaItem(scrapy.Item):
+class DisciplinasItem(scrapy.Item):
     # define the fields for your item here like:
     nome = scrapy.Field()
     turmas = scrapy.Field()
