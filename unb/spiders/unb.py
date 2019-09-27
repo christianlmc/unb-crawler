@@ -1,7 +1,6 @@
 import scrapy
 from ..items import DisciplinaItem
 from ..items import TurmaItem
-from ..items import VagasItem
 
 # -*- coding: utf-8 -*-
 
@@ -47,9 +46,9 @@ class UnbSpider(scrapy.Spider):
             vacancy_occupied = int(vacancy.getall()[1].encode('utf-8'))
             vacancy_free = int(vacancy.getall()[2].encode('utf-8'))
 
-            vagas = VagasItem(total=vacancy_total, ocupadas=vacancy_occupied, disponiveis=vacancy_free)
+            turma = TurmaItem(letra=letter, vagas_total=vacancy_total, vagas_ocupadas=vacancy_occupied, vagas_disponiveis=vacancy_free)
 
-            turmas.append(TurmaItem(letra=letter, vagas=vagas))
+            turmas.append(turma)
 
         disciplina["turmas"] = turmas
 

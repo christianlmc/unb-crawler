@@ -22,10 +22,7 @@ class DisciplinaItem(scrapy.Item):
 class TurmaItem(scrapy.Item):
     # define the fields for your item here like:
     letra = scrapy.Field()
-    vagas = scrapy.Field()
 
-class VagasItem(scrapy.Item):
-    # define the fields for your item here like:
-    total = scrapy.Field()
-    ocupadas = scrapy.Field()
-    disponiveis = scrapy.Field()
+    vagas_total = scrapy.Field()
+    vagas_ocupadas = scrapy.Field()
+    vagas_disponiveis = scrapy.Field()
