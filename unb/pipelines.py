@@ -7,6 +7,45 @@
 
 import mysql.connector
 
+class CursoPipeline(object):
+    def __init__(self):
+        self.create_connection()
+        self.create_table()
+
+    def create_connection(self):
+        self.conn = mysql.connector.connect(
+            host="localhost",
+            user="laravel",
+            passwd="",
+            database="",
+            use_unicode=True,
+            charset='utf8'
+        )
+
+        self.curr = self.conn.cursor(buffered=True)
+
+    def create_table(self):
+        self.curr.execute("""DROP TABLE IF EXISTS cursos""")
+        self.curr.execute("""
+            CREATE TABLE cursos(
+                id INT NOT NULL AUTO_INCREMENT,
+                nome VARCHAR(500) NOT NULL UNIQUE,
+                turno VARCHAR(200) NOT NULL,
+
+                PRIMARY KEY ( id )
+            );
+        """)
+        
+    def process_item(self, item, spider):
+        self.insert_cursos(item)
+
+    def insert_cursos(self, curso):
+        self.curr.execute("""
+                INSERT INTO cursos (nome, turno) VALUES (%s, %s);
+            """, (curso['nome'], curso['turno']))
+        self.conn.commit()
+
+
 class UnbPipeline(object):
     def __init__(self):
         self.create_connection()
@@ -16,8 +55,8 @@ class UnbPipeline(object):
         self.conn = mysql.connector.connect(
             host="localhost",
             user="root",
-            passwd="J!@bt5A*(",
-            database="secretaria_digital",
+            passwd="",
+            database="",
             use_unicode=True,
             charset='utf8'
         )

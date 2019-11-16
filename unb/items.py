@@ -7,7 +7,10 @@
 
 import scrapy
 
-
+class CursoItem(scrapy.Item):
+    nome = scrapy.Field()
+    turno = scrapy.Field()
+    
 class UnbItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
